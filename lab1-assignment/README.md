@@ -22,7 +22,35 @@ When a service takes 0.8 seconds to respond, its state becomes SLOW.
 When a service is stopped, failed checks are counted until it becomes DOWN.
 When the stopped service starts again, its state returns to UP after a successful response.
 Monitor Output
-Actual monitoring output should be inserted here after running the experiment.
+Monitor Output
+
+Test 1: Normal Operation
+
+Service 1: UP
+Service 2: UP
+Service 3: UP
+
+Test 2: Slow Response (0.8 seconds)
+
+Service 1: UP
+Service 2: SLOW (803.21 ms)
+Service 3: UP
+
+Test 3: Service 3 Stopped
+
+Service 3: CHECKING (1/3)
+Service 3: CHECKING (2/3)
+Service 3: DOWN
+
+Test 4: Service Recovery
+
+Service 1: UP
+Service 2: UP
+Service 3: UP
+
+Testing Observations
+
+The monitoring system successfully identifies services that respond normally, services that respond slowly, and services that become unavailable. It also detects service recovery after a successful response.
 5. Step 4: Consecutive Failed Checks
 A single failed check does not necessarily mean that a service is DOWN.
 The monitor requires three consecutive failed checks before declaring a service DOWN.
